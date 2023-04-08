@@ -52,27 +52,21 @@
 //   return String(number).padStart(2, '0');
 // }
 
-
-
-/-------------------------- one button---------------------/
-import flatpickr from 'flatpickr';
-import 'flatpickr/dist/flatpickr.min.css';
-import Notiflix from 'notiflix';
+// -------------------------- one button ---------------------
 const BUTTON_UI = {
-  activeBtn: "stop",
-    start: {
-      text: "Start",
-      class: "start",
-    },
-    stop: {
-      text: "Stop",
-      class: "stop",
-    }
-}
+  activeBtn: 'stop',
+  start: {
+    text: 'Start',
+    class: 'start',
+  },
+  stop: {
+    text: 'Stop',
+    class: 'stop',
+  },
+};
 const refs = {
   timer: document.getElementById('timer'),
   btn: document.getElementById('btn'),
-  
 };
 
 const countDownDate = new Date(`Jan 1, ${new Date().getFullYear() + 1}`);
@@ -100,12 +94,11 @@ function countDownTimeToNy() {
 
 function stopTimer() {
   clearInterval(timerId);
- 
 }
 
 function startTimer() {
   timerId = setInterval(countDownTimeToNy, 1000);
-  
+
   console.log(timerId);
 }
 
@@ -114,25 +107,25 @@ function addZero(number) {
 }
 
 function handlButtonClick() {
-  const { activeBtn,
+  const {
+    activeBtn,
     stop: { class: stopClass, text: stopText },
     start: { class: startClass, text: startText },
   } = BUTTON_UI;
-  
-  
+
   if (activeBtn === stopClass) {
-    console.log("Stop");
+    console.log('Stop');
     stopTimer();
     BUTTON_UI.activeBtn = startClass;
     refs.btn.textContent = startText;
     refs.btn.classList.add(startClass);
     refs.btn.classList.remove(stopClass);
   } else {
-    console.log("Start");
+    console.log('Start');
     startTimer();
     BUTTON_UI.activeBtn = stopClass;
     refs.btn.textContent = stopText;
-     refs.btn.classList.add(stopClass);
-     refs.btn.classList.remove(startClass);
+    refs.btn.classList.add(stopClass);
+    refs.btn.classList.remove(startClass);
   }
 }
